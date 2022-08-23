@@ -28,6 +28,14 @@ dataset_name='mlops_'+datetime.datetime.today().strftime('%Y%m%d')
 
 # COMMAND ----------
 
+conf=spark.createDataFrame(pd.DataFrame(data=[dataset_name],columns=['DataSetName']))
+
+# COMMAND ----------
+
+conf.write.format('parquet').save(os.path.join('dbfs:/tmp/','conf'))
+
+# COMMAND ----------
+
 df.write.format('parquet').save(os.path.join('dbfs:/tmp/',dataset_name))
 
 # COMMAND ----------
@@ -46,6 +54,14 @@ df_reload=load_dataset(dataset_name)
 # COMMAND ----------
 
 df_reload.show(10)
+
+# COMMAND ----------
+
+conf = load_dataset('conf')
+
+# COMMAND ----------
+
+conf.show()
 
 # COMMAND ----------
 
