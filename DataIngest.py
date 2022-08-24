@@ -32,11 +32,13 @@ conf=spark.createDataFrame(pd.DataFrame(data=[dataset_name],columns=['DataSetNam
 
 # COMMAND ----------
 
-conf.write.format('parquet').save(os.path.join('dbfs:/tmp/','conf'))
+#conf.write.format('parquet').save(os.path.join('dbfs:/tmp/','conf'))
+conf.write.mode('overwrite').parquet(os.path.join('dbfs:/tmp/','conf'))
 
 # COMMAND ----------
 
-df.write.format('parquet').save(os.path.join('dbfs:/tmp/',dataset_name))
+#df.write.format('parquet').save(os.path.join('dbfs:/tmp/',dataset_name))
+df.write.mode('overwrite').parquet(os.path.join('dbfs:/tmp/',dataset_name))
 
 # COMMAND ----------
 

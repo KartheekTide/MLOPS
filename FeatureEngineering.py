@@ -58,10 +58,6 @@ preprocess['target'] = y
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
 preprocess = spark.createDataFrame(preprocess)
 
 # COMMAND ----------
@@ -78,7 +74,8 @@ pandasDF
 
 # COMMAND ----------
 
-preprocess.write.format('parquet').save(os.path.join('dbfs:/tmp/',dataset_name))
+#preprocess.write.format('parquet').save(os.path.join('dbfs:/tmp/',dataset_name))
+preprocess.write.mode('overwrite').parquet(os.path.join('dbfs:/tmp/',dataset_name))
 
 # COMMAND ----------
 
