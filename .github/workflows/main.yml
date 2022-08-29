@@ -1,1 +1,10 @@
+image: python:3.7.9-slim-buster
+pipelines:
 
+  branches:
+    main:
+      - step:
+          name: WIP Deploy
+          deployment: wip
+          script:
+            - trigger_dag.sh
