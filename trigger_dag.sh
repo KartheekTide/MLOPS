@@ -1,4 +1,4 @@
-export $airflow_server = locahost:8080
+$airflow_server = locahost:8080
 curl --location --request POST 'http://localhost:8080/api/v1/dags/example_databricks_repos_operator_v2/dagRuns' \
 --header 'Authorization: Basic YWRtaW46dGlkZQ==' \
 --header 'Content-Type: application/json' \
