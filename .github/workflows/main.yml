@@ -1,9 +1,13 @@
-image: python:3.7.9-slim-buster
-pipelines:
-  branches:
-    main:
-      - step:
-          name: WIP Deploy
-          deployment: wip
-          script:
-            - trigger_dag.sh
+name: Airflow DAG run
+on:
+  push:
+    [branches]: [main]
+  pull_request:
+    [branches]: [main]
+jobs:
+  build:
+    runs-on:  ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a shell script
+        run: ./trigger_dag.sh
